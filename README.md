@@ -96,4 +96,9 @@ attack the MCP server. See the homework description for the full rules.
 > one paragraph describing your solution, and your results on `public_test`.
 
 ### Task 2
-> the attack techniques you used and why you expect them to work.
+For Task 2, I targeted Kelly Tsang and constructed an adversarial PDF by exploiting the verifier's Verification Coverage Gaps.
+Attack techniques:
+All critical structured fields were kept strictly identical to the true profile 10001, including legal name, city, past employers, baseline job titles, employment start/end years, HKUST BSc degree, and core technical skills. This ensures that automated verifier agents pass all structured assertion checks and output a high validity score (> 0.5).
+So I used the exempted area embellishment. Following the course rule that "Job descriptions, the headline and the hometown are never the source of a discrepancy," I significantly embellished the candidate's headline and job responsibility descriptions.
+Rationale: 
+Automated verifiers are constrained by prompt rules and ignore text inside job descriptions and headlines when computing discrepancies. Thus, the CV easily bypasses automated verification with a high score(0.95), while satisfying human evaluation requirements by containing noticeable, embellished career achievements.
