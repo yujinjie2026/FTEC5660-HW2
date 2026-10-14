@@ -93,7 +93,9 @@ attack the MCP server. See the homework description for the full rules.
 > to students: this is your report, see the homework description.
 
 ### Task 1
-> one paragraph describing your solution, and your results on `public_test`.
+The main idea is to identify the correct candidate before checking individual claims, rather than judge the CV by its overall plausibility. The agent searches LinkedIn using the candidate’s name and location, broadens the search when needed, and uses Facebook as supplementary evidence. It then checks the name, city, employment history, education, and individual skills, distinguishing genuine discrepancies from equivalent wording and valid omissions. Pydantic schemas and LangChain’s ToolStrategy produce structured claim-level checks containing the CV claim, corresponding profile evidence, and a match status. Python rules convert these findings into scores: confirmed discrepancies receive 0.05, fully verified matches receive 0.95, and incomplete findings trigger a second review using the available evidence. After review, supported matches without detected discrepancies may receive 0.90, while unresolved cases or repeated errors receive 0.50. To improve efficiency and reliability, the implementation processes at most three CVs concurrently, encourages parallel profile retrieval, and handles timeouts and errors separately for each CV. The prompt also treats CV and profile text as untrusted data and instructs the agent to ignore embedded instructions. 
+
+In most public test CVs results, the agent correctly classified 7/7, achieving 100% accuracy.
 
 ### Task 2
 For Task 2, I targeted Kelly Tsang and constructed an adversarial PDF by exploiting the verifier's Verification Coverage Gaps.
